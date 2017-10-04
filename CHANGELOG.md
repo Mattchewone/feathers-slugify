@@ -1,5 +1,8 @@
 # Change Log
 
+## [v1.0.0](https://github.com/Mattchewone/feathers-slugify/tree/v1.0.0) (2017-10-04)
+[Full Changelog](https://github.com/Mattchewone/feathers-slugify/compare/v0.0.1...v1.0.0)
+
 ## [v0.0.1](https://github.com/Mattchewone/feathers-slugify/tree/v0.0.1) (2017-10-04)
 
 
