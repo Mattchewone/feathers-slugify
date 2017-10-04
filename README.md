@@ -14,36 +14,114 @@
 npm install feathers-slugify --save
 ```
 
-## Documentation
 
-Please refer to the [feathers-slugify documentation](http://docs.feathersjs.com/) for more details.
-
-## Complete Example
-
-Here's an example of a Feathers server that uses `feathers-slugify`. 
-
+## Single Rule w/single property
 ```js
-const feathers = require('feathers');
-const rest = require('feathers-rest');
-const hooks = require('feathers-hooks');
-const bodyParser = require('body-parser');
-const errorHandler = require('feathers-errors/handler');
-const plugin = require('feathers-slugify');
+const slugify = require('feathers-slugify')
 
-// Initialize the application
-const app = feathers()
-  .configure(rest())
-  .configure(hooks())
-  // Needed for parsing bodies (login)
-  .use(bodyParser.json())
-  .use(bodyParser.urlencoded({ extended: true }))
-  // Initialize your feathers plugin
-  .use('/plugin', plugin())
-  .use(errorHandler());
+module.exports = {
+  before: {
+    all: [],
+    find: [],
+    get: [],
+    create: [
+      slugify({ slug: 'name' })
+    ]
+  }
+}
 
-app.listen(3030);
+// With data for create
+const data = {
+  name: 'Dave Smith'
+}
+// Will become
+const data = {
+  name: 'Dave Smith',
+  slug: 'dave-smith'
+}
+```
 
-console.log('Feathers app started on 127.0.0.1:3030');
+## Single Rule w/multiple properties
+```js
+const slugify = require('feathers-slugify')
+
+module.exports = {
+  before: {
+    all: [],
+    find: [],
+    get: [],
+    create: [
+      slugify({ slug: ['meta.firstname', 'meta.surname'] })
+    ]
+  }
+}
+
+// With data for create
+const data = {
+  meta: {
+    firstname: 'Dave',
+    surname: 'Smith'
+  }
+}
+// Will become
+const data = {
+  meta: {
+    firstname: 'Dave',
+    surname: 'Smith'
+  },
+  slug: 'dave-smith'
+}
+```
+
+## Multiple Rules
+```js
+const slugify = require('feathers-slugify')
+
+module.exports = {
+  before: {
+    all: [],
+    find: [],
+    get: [],
+    create: [
+      slugify([
+        {
+          source: ['name.first', 'name.last'],
+          dest: 'fullname',
+          overwrite: true // defaults to false
+        },
+        {
+          source: 'title',
+          dest: 'titleSlug'
+        }
+      ])
+    ]
+  }
+}
+
+// With data for create
+const data = {
+  name: {
+    first: 'John',
+    last: 'Smith'
+  },
+  title: 'My Awesome Title'
+}
+// Will become
+const data = {
+  name: {
+    first: 'John',
+    last: 'Smith'
+  },
+  fullname: 'john-smith',
+  title: 'My Awesome Title',
+  titleSlug: 'my-awesome-title'
+}
+```
+
+## Notes
+This package uses the [url-slug](https://www.npmjs.com/package/url-slug) package to **_slugify_**.
+```
+RFC 3986 compliant slug generator with support for multiple languages. It creates safe slugs for use in urls—and can revert them.
 ```
 
 ## License

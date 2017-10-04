@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { slugify } = require('../lib/index')
+const slugify = require('../lib/index')
 const { setSlug } = slugify
 
 describe('Slugify', function () {
