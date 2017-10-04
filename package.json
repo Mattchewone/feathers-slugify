@@ -1,7 +1,7 @@
 {
   "name": "feathers-slugify",
   "description": "Feathers hook to slugify properties",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/https://github.com/Mattchewone/feathers-slugify.git",
   "main": "lib/",
   "keywords": [
