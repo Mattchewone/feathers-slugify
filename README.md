@@ -1,12 +1,10 @@
 # feathers-slugify
 
-[![Build Status](https://travis-ci.org/https://github.com/Mattchewone/feathers-slugify.git.png?branch=master)](https://travis-ci.org/https://github.com/Mattchewone/feathers-slugify.git)
-[![Code Climate](https://codeclimate.com/github/https://github.com/Mattchewone/feathers-slugify.git/badges/gpa.svg)](https://codeclimate.com/github/https://github.com/Mattchewone/feathers-slugify.git)
-[![Test Coverage](https://codeclimate.com/github/https://github.com/Mattchewone/feathers-slugify.git/badges/coverage.svg)](https://codeclimate.com/github/https://github.com/Mattchewone/feathers-slugify.git/coverage)
-[![Dependency Status](https://img.shields.io/david/https://github.com/Mattchewone/feathers-slugify.git.svg?style=flat-square)](https://david-dm.org/https://github.com/Mattchewone/feathers-slugify.git)
 [![Download Status](https://img.shields.io/npm/dm/feathers-slugify.svg?style=flat-square)](https://www.npmjs.com/package/feathers-slugify)
 
 > Feathers hook to slugify properties
+
+**Only tested with FeathersJS V3**
 
 ## Installation
 
