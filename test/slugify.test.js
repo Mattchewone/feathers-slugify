@@ -111,7 +111,7 @@ describe('Slugify', function () {
       }
     })
 
-    it('throws an error when missing source', function () {
+    it('throws an error when missing dest', function () {
       const rule = {
         source: [],
         overwrite: true
